@@ -1,0 +1,10 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="108dp" android:height="108dp" android:viewportWidth="108" android:viewportHeight="108">
+    <!-- SMS bubble -->
+    <path android:fillColor="#FFF8E6" android:pathData="M36,30h36a8,8 0 0 1 8,8v22a8,8 0 0 1 -8,8h-26l-12,10v-10h-6a8,8 0 0 1 -8,-8v-22a8,8 0 0 1 8,-8z"/>
+    <!-- message lines -->
+    <path android:strokeColor="#14604C" android:strokeWidth="3.2" android:strokeLineCap="round" android:pathData="M34,40h22M34,47h15M34,54h8"/>
+    <!-- coin -->
+    <path android:fillColor="#F2B632" android:strokeColor="#14604C" android:strokeWidth="3" android:pathData="M69,62m-14,0a14,14 0 1 0 28,0a14,14 0 1 0 -28,0"/>
+    <!-- rupee -->
+    <path android:strokeColor="#14604C" android:strokeWidth="2.4" android:strokeLineCap="round" android:strokeLineJoin="round" android:pathData="M62,55.5h14M62,60h14M62,55.5h4a4.6,4.6 0 0 1 0,9.2h-4M65,64.7l8,8"/>
+</vector>

@@ -1,0 +1,14 @@
+signing/
+keystore.properties
+*.jks
+*.keystore
+*.apk
+*.aab
+*.mbak
+build/
+.gradle/
+.kotlin/
+.idea/
+local.properties
+*.iml
+.DS_Store

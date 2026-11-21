@@ -1,0 +1,55 @@
+# Sample messages for Kotak. Dummy data only (account 1234, made-up names). Format: see CONTRIBUTING.md.
+# `template` = a Kotak template in parse/banks/Kotak.kt must match it (not just the generic parser).
+
+kind: sms
+sender: VM-KOTAKB-S
+text: Received Rs.350.00 in your Kotak Bank AC 1234 from XYZ DOE on 18-11-26.UPI Ref:668244
+expect: CREDIT 350.00 acct=1234 payee="Xyz Doe" ref=668244 bank=Kotak template
+---
+kind: sms
+sender: AX-KOTAKB-S
+text: Sent Rs.220.00 from Kotak Bank A/c X1234 to JOHN Q SAMPLE on 17-11-26. UPI Ref 6684199. Not done by you? Tap https://kotak.bank.in/KBANKT/Fraud
+expect: DEBIT 220.00 acct=1234 payee="John Q Sample" ref=6684199 bank=Kotak template
+---
+kind: sms
+sender: VM-KOTAKB-S
+text: Sent Rs.1,23,450.00 from Kotak Bank A/c X1234 to A B on 17-11-26. UPI Ref 6684199.
+expect: DEBIT 123450.00 acct=1234 payee="A B" ref=6684199 bank=Kotak template
+---
+# Receiver's name straight after the account number: no "to", no UPI id.
+kind: sms
+sender: VM-KOTAKB-S
+text: Sent Rs.4200.00 from Kotak Bank A/c X1234 JANE Q DOE on 18-11-26. UPI Ref 668654. Not done by you? Tap https://kotak.bank.in/KBANKT/Fraud
+expect: DEBIT 4200.00 acct=1234 payee="Jane Q Doe" ref=668654 bank=Kotak template
+---
+# A Kotak wording no template covers yet: still handled by the generic parser, bank comes from the sender.
+kind: sms
+sender: VM-KOTAKB-S
+text: Rs.75.00 debited from a/c XX1234 on 18-11-26 to VPA shop@upi (UPI Ref No 600000000001).
+expect: DEBIT 75.00 acct=1234 ref=600000000001 bank=Kotak
+---
+kind: sms
+sender: VM-KOTAKB-S
+text: 123456 is your OTP for Kotak Bank login. Do not share with anyone.
+expect: IGNORED
+---
+kind: notif
+package: com.kotak.bank.mobile
+text: ₹1.00 sent to jane.doe@okaxis\nAmount debited from XX1234. Check out details.
+expect: DEBIT 1.00 acct=1234 payee=jane.doe@okaxis bank=Kotak template
+---
+kind: notif
+package: com.kotak.bank.mobile
+text: ₹1.00 received from JANE DOE\nAmount credited to XX1234. Check out details.
+expect: CREDIT 1.00 acct=1234 payee="JANE DOE" bank=Kotak template
+---
+# No payee in the notification: direction is clear, payee is not, so it goes to review.
+kind: notif
+package: com.kotak.bank.mobile
+text: ₹5.90 debited\nAmount debited from XX1234 towards charges.
+expect: DEBIT 5.90 acct=1234 bank=Kotak review
+---
+kind: notif
+package: com.kotak.bank.mobile
+text: Login alert\nNew login from device
+expect: IGNORED

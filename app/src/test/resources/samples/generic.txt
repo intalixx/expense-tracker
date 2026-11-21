@@ -1,0 +1,21 @@
+# Banks that have no template file yet are handled by the generic parser in SmsParser.kt. Dummy data only.
+
+kind: sms
+sender: HDFCBK
+text: Rs 500.00 debited from a/c **4321 on 18-11-26 to VPA shop@upi (UPI Ref No 123456789012). Avl Bal Rs 9,000.00
+expect: DEBIT 500.00 acct=4321 ref=123456789012
+---
+kind: sms
+sender: HDFCBK
+text: Payment of Rs.500 failed. Money debited will be refunded in 3 days.
+expect: IGNORED
+---
+kind: sms
+sender: AX-SOMEBK
+text: Rs.100 debited from A/c X1234 and credited to A/c X9876 on 18-11-26
+expect: DEBIT 100.00 acct=1234 review
+---
+kind: notif
+package: com.google.android.apps.nbu.paisa.user
+text: JANE DOE paid you ₹1.00\nHello there
+expect: CREDIT 1.00 payee="JANE DOE"

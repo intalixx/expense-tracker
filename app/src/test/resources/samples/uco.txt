@@ -1,0 +1,13 @@
+# Sample messages for UCO Bank. Dummy data only (account 1234). Format: see CONTRIBUTING.md.
+# UCO UPI texts have no payee, no UPI id and no reference number.
+# Sender ID is UCOBNK; operators add a prefix/suffix (JX-UCOBNK-T, VK-UCOBNK).
+
+kind: sms
+sender: JX-UCOBNK-T
+text: A/c XX1234 Debited with Rs.11.00 on 19-11-2026 by UCO-UPI.Avl Bal Rs.24195.83. Report Dispute https://spgrs.ucoonline.bank.in/Home_Page.jsp
+expect: DEBIT 11.00 acct=1234 bank="UCO Bank" template
+---
+kind: sms
+sender: VK-UCOBNK
+text: A/c XX1234 Credited with Rs.114.00 on 07-11-2026 by UCO-UPI.Avl Bal Rs.2476.94. Report Dispute https://spgrs.ucoonline.bank.in/Home_Page.jsp -UCO Bank
+expect: CREDIT 114.00 acct=1234 bank="UCO Bank" template
